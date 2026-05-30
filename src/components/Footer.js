@@ -14,10 +14,10 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#1E1714] text-[#F5EFEB] border-t border-white/5 relative z-10">
-      
+
       {/* Upper Footer Columns */}
       <div className="max-w-7xl mx-auto px-6 py-16 sm:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-        
+
         {/* Col 1: Brand & Bio */}
         <div className="space-y-6">
           <h3 className="font-serif font-bold text-xl sm:text-2xl text-primary tracking-wide">
@@ -36,7 +36,7 @@ export default function Footer() {
           <ul className="space-y-2.5 text-sm text-text-muted">
             <li>
               <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="hover:text-primary transition-colors">
-                Home / Hero
+                Home
               </a>
             </li>
             <li>
@@ -115,11 +115,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
           <p>© 2026 Priya Dream Kitchen. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="https://nimeshakalanka.github.io/Priya-Dream-Kitchen.github.io" className="hover:underline">
-              Official Site
-            </a>
-            <span>•</span>
-            <span className="text-accent">Made with love in Sri Lanka</span>
+            <span className="text-accent"><span className='text-white'>•</span> Made by <a href="https://nimeshakalanka.dev" className="hover:text-primary">Nimesh Akalanka</a></span>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Services() {
   const [visible, setVisible] = useState(false);
@@ -26,6 +27,7 @@ export default function Services() {
   const serviceData = [
     {
       title: 'Hands-On Cooking Lessons',
+      bgImage: '/images/service-hands-on.png',
       description: 'Cook, learn, and have fun with our expert chefs! Master new techniques using fresh local ingredients in our lively, fully interactive kitchen. Perfect for food lovers of all levels.',
       // SVG of a frying pan / stove fire
       icon: (
@@ -37,6 +39,7 @@ export default function Services() {
     },
     {
       title: 'Chef-Led Culinary Demonstrations',
+      bgImage: '/images/service-demo.png',
       description: "Learn from the pros! Watch our chefs demonstrate recipes and share professional secrets, from knife skills to complex spice blending. Go home inspired and ready to cook with confidence.",
       // SVG of a chef hat
       icon: (
@@ -49,6 +52,7 @@ export default function Services() {
     },
     {
       title: 'Eat What You Make (and More!)',
+      bgImage: '/images/service-eat.png',
       description: 'Savor the fruits of your labor! After the cooking session, sit down to taste your creations and enjoy additional local delicacies prepared by our hosts in a warm, festive setting.',
       // SVG of plate, fork, and spoon
       icon: (
@@ -103,7 +107,19 @@ export default function Services() {
                 style={{ transform: 'skewX(-20deg)' }}
               />
 
-              <div className="space-y-6">
+              {/* Background Image for Card */}
+              <div className="absolute inset-0 z-0 opacity-[0.15] group-hover:opacity-[0.35] transition-opacity duration-700 pointer-events-none">
+                <Image
+                  src={service.bgImage}
+                  alt={service.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" />
+              </div>
+
+              <div className="space-y-6 relative z-10">
                 {/* Icon Container */}
                 <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-surface shadow-inner border border-border-color/40 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
@@ -119,7 +135,7 @@ export default function Services() {
               </div>
 
               {/* Bottom accent link */}
-              <div className="mt-8 pt-4 border-t border-border-color/30 flex items-center gap-2 text-primary font-medium text-sm group-hover:text-accent transition-colors cursor-pointer">
+              <div className="mt-8 pt-4 border-t border-border-color/30 flex items-center gap-2 text-primary font-medium text-sm group-hover:text-accent transition-colors cursor-pointer relative z-10">
                 <span>Learn details</span>
                 <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

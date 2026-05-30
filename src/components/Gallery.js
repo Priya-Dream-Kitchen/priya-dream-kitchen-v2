@@ -6,27 +6,24 @@ import Image from 'next/image';
 export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const [visible, setVisible] = useState(false);
   
   const sectionRef = useRef(null);
-  const autoPlayTimer = useRef(null);
 
   const images = [
-    { src: '/images/imgs/IMG_1877.jpg', alt: 'Real cooking experience - Priya Dream Kitchen Weligama' },
-    { src: '/images/imgs/IMG_2229.jpg', alt: 'Clay pot cooking with fresh local ingredients' },
-    { src: '/images/imgs/IMG_2415.jpg', alt: 'Expert host showing traditional cooking steps' },
-    { src: '/images/imgs/IMG_2420.jpg', alt: 'Heirloom rice and curries on our wooden hearth' },
-    { src: '/images/imgs/IMG_2424 (1).jpg', alt: 'Hands-on lesson in curry powder grinding' },
-    { src: '/images/imgs/IMG_2427.JPG', alt: 'Freshly plated Sri Lankan roti and sambols' },
-    { src: '/images/srilankan-curries.png', alt: 'Premium Sri Lankan curries cooking in traditional clay pots' },
-    { src: '/images/chef-cooking.png', alt: 'Local home chef Amma hand-grinding coconut on Miris Gala' },
-    { src: '/images/imgs/photo_2026-04-10_13-11-18.jpg', alt: 'Guests smiling and eating what they cooked' },
-    { src: '/images/imgs/photo_2026-04-10_13-17-08.jpg', alt: 'Happy tourists learning traditional culinary art' },
-    { src: '/images/imgs/photo_2026-04-16_19-48-10.jpg', alt: 'A colorful spread of Sri Lankan seasonal curries' },
-    { src: '/images/imgs/1200x900_shutterstock_1050903170-1_1648536412.jpg', alt: 'Authentic Weligama kitchen setup' },
+    { src: '/images/imgs/IMG_1877.jpg', alt: 'Hands-on cooking class — preparing local ingredients in clay bowls' },
+    { src: '/images/imgs/IMG_2229.jpg', alt: 'Warm Sri Lankan welcome — Ayubowan greeting in traditional sarongs' },
+    { src: '/images/imgs/IMG_2415.jpg', alt: 'Family moments — capturing memories during the cooking lesson' },
+    { src: '/images/imgs/IMG_2420.jpg', alt: 'Authentic Sri Lankan feast — curries and red rice served in clay pots' },
+    { src: '/images/imgs/IMG_2424 (1).jpg', alt: 'Happy cooking class graduates posing for a group selfie with Chef Priya and her son' },
+    { src: '/images/imgs/IMG_2427.JPG', alt: 'Relaxing in our tropical garden swing after the cooking class' },
+    { src: '/images/srilankan-curries.png', alt: 'Vibrant Sri Lankan curries simmered slowly over clay hearths' },
+    { src: '/images/imgs/photo_2026-04-10_13-11-18.jpg', alt: 'Guests learning the art of stir-frying curries over the stove' },
+    { src: '/images/imgs/photo_2026-04-10_13-17-08.jpg', alt: 'Sitting down to enjoy the handmade feast in our rustic kitchen' },
+    { src: '/images/imgs/photo_2026-04-16_19-48-10.jpg', alt: 'Serving up fresh homemade rice and curry creations with Chef Priya' },
   ];
+
+  const doubleImages = [...images, ...images];
 
   // Intersection Observer for fade-in entrance
   useEffect(() => {
@@ -45,39 +42,6 @@ export default function Gallery() {
 
     return () => observer.disconnect();
   }, []);
-
-  // Auto-play sliding functionality
-  const startAutoplay = () => {
-    stopAutoplay();
-    autoPlayTimer.current = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % images.length);
-    }, 3800);
-  };
-
-  const stopAutoplay = () => {
-    if (autoPlayTimer.current) {
-      clearInterval(autoPlayTimer.current);
-    }
-  };
-
-  useEffect(() => {
-    if (!isOpen && !isHovered) {
-      startAutoplay();
-    } else {
-      stopAutoplay();
-    }
-    return () => stopAutoplay();
-  }, [isOpen, isHovered]);
-
-  const handlePrev = (e) => {
-    e.stopPropagation();
-    setActiveSlide((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const handleNext = (e) => {
-    e.stopPropagation();
-    setActiveSlide((prev) => (prev + 1) % images.length);
-  };
 
   const openLightbox = (index) => {
     setPhotoIndex(index);
@@ -113,10 +77,10 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="py-24 sm:py-32 bg-bg overflow-hidden" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="w-full relative">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16 px-6">
           <span className="text-primary font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full inline-block">
             Our Gallery
           </span>
@@ -130,93 +94,65 @@ export default function Gallery() {
 
         {/* Premium Sliding Carousel Container */}
         <div 
-          className={`relative max-w-4xl mx-auto rounded-[32px] overflow-hidden shadow-2xl border border-border-color bg-surface/30 backdrop-blur-md transition-all duration-1000 transform ${
+          className={`relative w-full overflow-hidden transition-all duration-1000 transform ${
             visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
           }`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Main Slider Track */}
-          <div className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden">
-            {images.map((img, index) => (
-              <div
-                key={index}
-                onClick={() => openLightbox(index)}
-                className={`absolute inset-0 w-full h-full cursor-pointer transition-all duration-[800ms] ease-in-out transform ${
-                  index === activeSlide
-                    ? 'opacity-100 scale-100 z-20 pointer-events-auto'
-                    : 'opacity-0 scale-105 z-10 pointer-events-none'
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  priority={index === 0}
-                  sizes="(max-width: 768px) 100vw, 896px"
-                  className="object-cover transition-transform duration-700 hover:scale-102"
-                />
-                
-                {/* Dark gradient overlay for readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+          {/* Subtle fade effect on sides */}
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-bg to-transparent z-30 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-bg to-transparent z-30 pointer-events-none" />
 
-                {/* Caption / Description overlay */}
-                <div className="absolute bottom-6 left-6 right-6 text-left z-30 select-none pointer-events-none">
-                  <p className="text-white font-serif text-lg sm:text-xl md:text-2xl font-bold tracking-wide drop-shadow-md">
-                    {img.alt}
-                  </p>
-                  <span className="inline-block mt-2 text-xs uppercase tracking-widest font-semibold text-accent bg-accent/20 px-3 py-1 rounded-full backdrop-blur-sm">
-                    {index + 1} / {images.length} • Real Cooking
-                  </span>
-                </div>
+          {/* Marquee Track */}
+          <div className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused] py-4">
+            {doubleImages.map((img, index) => {
+              const originalIndex = index % images.length;
+              return (
+                <div
+                  key={index}
+                  onClick={() => openLightbox(originalIndex)}
+                  className="w-[280px] sm:w-[350px] md:w-[420px] aspect-[4/3] flex-shrink-0 cursor-pointer"
+                >
+                  <div className="group relative w-full h-full rounded-[24px] overflow-hidden border border-border-color bg-surface/30 backdrop-blur-sm shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-500">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 420px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    
+                    {/* Dark gradient overlay for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-85 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
 
-                {/* Hover zoom overlay indicator */}
-                <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="p-3 bg-white/20 backdrop-blur-md rounded-full text-white border border-white/30">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                    </svg>
+                    {/* Caption / Description overlay */}
+                    <div className="absolute bottom-5 left-5 right-5 text-left z-20 select-none pointer-events-none">
+                      <p className="text-white font-serif text-sm sm:text-base font-bold tracking-wide leading-tight drop-shadow-md">
+                        {img.alt}
+                      </p>
+                      <span className="inline-block mt-2 text-[10px] uppercase tracking-widest font-semibold text-accent bg-accent/20 px-2 py-0.5 rounded-full backdrop-blur-sm">
+                        {originalIndex + 1} / {images.length} • Click to view
+                      </span>
+                    </div>
+
+                    {/* Hover zoom overlay indicator */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <div className="p-2.5 bg-white/20 backdrop-blur-md rounded-full text-white border border-white/30">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-
-            {/* Slider Navigation Arrows */}
-            <button
-              onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full glass-card hover:bg-primary/20 text-white border border-white/20 hover:scale-110 active:scale-95 transition-all focus:outline-none"
-              aria-label="Previous Slide"
-            >
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <button
-              onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full glass-card hover:bg-primary/20 text-white border border-white/20 hover:scale-110 active:scale-95 transition-all focus:outline-none"
-              aria-label="Next Slide"
-            >
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+              );
+            })}
           </div>
 
-          {/* Under-indicators / Thumbnail-Dots */}
-          <div className="flex justify-center items-center gap-2 py-4 bg-surface/80 border-t border-border-color">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveSlide(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  activeSlide === index 
-                    ? 'bg-primary w-8' 
-                    : 'bg-text-muted/30 hover:bg-primary/50'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+          {/* Interactive instruction text */}
+          <div className="flex justify-center items-center gap-2 mt-4 text-xs tracking-widest uppercase text-text-muted/60 font-medium">
+            <span>Hover to pause</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <span>Click any photo to enlarge</span>
           </div>
         </div>
       </div>
@@ -227,7 +163,7 @@ export default function Gallery() {
           {/* Close button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-6 right-6 p-3 text-white/80 hover:text-white rounded-full bg-white/10 hover:bg-white/20 transition-all z-[10002]"
+            className="absolute top-6 right-6 p-3 text-white/80 hover:text-white rounded-full bg-white/10 hover:bg-white/20 transition-all z-[10002] cursor-pointer"
             aria-label="Close Lightbox"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -238,7 +174,7 @@ export default function Gallery() {
           {/* Navigation - Left */}
           <button
             onClick={prevLightboxImage}
-            className="absolute left-4 p-3 text-white/80 hover:text-white rounded-full bg-white/5 hover:bg-white/15 transition-all z-[10001]"
+            className="absolute left-4 p-3 text-white/80 hover:text-white rounded-full bg-white/5 hover:bg-white/15 transition-all z-[10001] cursor-pointer"
             aria-label="Previous Image"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -268,7 +204,7 @@ export default function Gallery() {
           {/* Navigation - Right */}
           <button
             onClick={nextLightboxImage}
-            className="absolute right-4 p-3 text-white/80 hover:text-white rounded-full bg-white/5 hover:bg-white/15 transition-all z-[10001]"
+            className="absolute right-4 p-3 text-white/80 hover:text-white rounded-full bg-white/5 hover:bg-white/15 transition-all z-[10001] cursor-pointer"
             aria-label="Next Image"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

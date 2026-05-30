@@ -121,7 +121,7 @@ export default function Booking() {
       <div className="absolute bottom-[20%] left-[-10%] w-[350px] h-[350px] bg-accent/10 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4 mb-12">
           <span className="text-primary font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full inline-block">
@@ -138,7 +138,7 @@ export default function Booking() {
         {/* Glass Card Form */}
         <div className="glass-panel p-8 sm:p-12 rounded-[32px] border border-border-color shadow-2xl">
           <form onSubmit={handleSubmit} className="space-y-6">
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div className="space-y-2">
@@ -152,11 +152,10 @@ export default function Booking() {
                   value={formData.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                    touched.name && errors.name
-                      ? 'border-red-500 ring-2 ring-red-500/25'
-                      : 'border-border-color focus:border-primary'
-                  }`}
+                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.name && errors.name
+                    ? 'border-red-500 ring-2 ring-red-500/25'
+                    : 'border-border-color focus:border-primary'
+                    }`}
                   placeholder="John Doe"
                   required
                 />
@@ -177,11 +176,10 @@ export default function Booking() {
                   value={formData.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                    touched.email && errors.email
-                      ? 'border-red-500 ring-2 ring-red-500/25'
-                      : 'border-border-color focus:border-primary'
-                  }`}
+                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.email && errors.email
+                    ? 'border-red-500 ring-2 ring-red-500/25'
+                    : 'border-border-color focus:border-primary'
+                    }`}
                   placeholder="johndoe@example.com"
                   required
                 />
@@ -204,11 +202,10 @@ export default function Booking() {
                   value={formData.phone}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                    touched.phone && errors.phone
-                      ? 'border-red-500 ring-2 ring-red-500/25'
-                      : 'border-border-color focus:border-primary'
-                  }`}
+                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.phone && errors.phone
+                    ? 'border-red-500 ring-2 ring-red-500/25'
+                    : 'border-border-color focus:border-primary'
+                    }`}
                   placeholder="+44 7911 123456"
                   required
                 />
@@ -229,11 +226,10 @@ export default function Booking() {
                   value={formData.date}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                    touched.date && errors.date
-                      ? 'border-red-500 ring-2 ring-red-500/25'
-                      : 'border-border-color focus:border-primary'
-                  }`}
+                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.date && errors.date
+                    ? 'border-red-500 ring-2 ring-red-500/25'
+                    : 'border-border-color focus:border-primary'
+                    }`}
                   required
                 />
                 {touched.date && errors.date && (
@@ -254,11 +250,10 @@ export default function Booking() {
                   value={formData.time}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                    touched.time && errors.time
-                      ? 'border-red-500 ring-2 ring-red-500/25'
-                      : 'border-border-color focus:border-primary'
-                  }`}
+                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.time && errors.time
+                    ? 'border-red-500 ring-2 ring-red-500/25'
+                    : 'border-border-color focus:border-primary'
+                    }`}
                   required
                 >
                   <option value="">Select a time slot</option>
@@ -286,12 +281,11 @@ export default function Booking() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   min="1"
-                  max="6"
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                    touched.guests && errors.guests
-                      ? 'border-red-500 ring-2 ring-red-500/25'
-                      : 'border-border-color focus:border-primary'
-                  }`}
+                  max="10"
+                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.guests && errors.guests
+                    ? 'border-red-500 ring-2 ring-red-500/25'
+                    : 'border-border-color focus:border-primary'
+                    }`}
                   required
                 />
                 {touched.guests && errors.guests && (
@@ -305,7 +299,7 @@ export default function Booking() {
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
                 <span className="text-sm text-text-muted font-medium">
-                  Class Rates: <span className="text-accent font-bold">from $20 per guest</span>
+                  Class Rates: <span className="text-accent font-bold">from $25 per guest</span>
                 </span>
               </div>
               <p className="text-xs text-text-muted italic max-w-sm">

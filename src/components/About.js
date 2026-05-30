@@ -84,8 +84,8 @@ export default function About() {
 
             {/* Float badge */}
             <div className="absolute -bottom-6 -right-4 bg-surface/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl border border-border-color animate-float">
-              <span className="block text-xs uppercase tracking-widest text-text-muted font-medium">Award Winning</span>
-              <span className="font-serif font-bold text-lg text-primary">Local Host Amma</span>
+              <span className="block text-xs uppercase tracking-widest text-text-muted font-medium">Cook with</span>
+              <span className="font-serif font-bold text-lg text-primary">Chef Priya</span>
             </div>
           </div>
 

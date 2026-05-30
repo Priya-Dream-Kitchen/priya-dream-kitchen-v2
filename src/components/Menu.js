@@ -28,22 +28,19 @@ export default function Menu() {
     {
       title: 'Sri Lankan Rice & Curry Feast',
       description: 'The heartbeat of our culinary class. Learn to cook red heirloom rice served with 5 seasonal curries (dhal, jackfruit, beetroot, gotukola sambol, and chicken or fish curry).',
-      price: '$20',
       image: '/images/food-spread.png',
       tags: ['Traditional', 'Popular', 'Gluten Free'],
     },
     {
       title: 'Traditional Pol Roti & Lunu Miris',
       description: 'Master the art of kneading coconut-infused flatbread. Cook over an open fire and pair it with a freshly stone-ground spicy onion chili sambol.',
-      price: '$18',
-      image: '/images/spices-closeup.png',
+      image: '/images/imgs/roti.jpeg',
       tags: ['Hands-on', 'Spicy', 'Vegetarian'],
     },
     {
       title: 'Kottu Roti & Devilled Chicken',
       description: 'Learn the rhythmic chopping technique of building Kottu Roti. Blend fresh vegetables, shredded roti, and eggs, served with hot devilled chicken.',
-      price: '$22',
-      image: '/images/Sri-Lankan-Foods6.png',
+      image: '/images/imgs/kottu.png',
       tags: ['Street Food', 'Chef Special'],
     },
   ];
@@ -51,7 +48,7 @@ export default function Menu() {
   return (
     <section id="menu" className="py-24 sm:py-32 bg-bg/50" ref={containerRef}>
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
           <span className="text-primary font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full inline-block">
@@ -70,25 +67,21 @@ export default function Menu() {
           {menuItems.map((item, index) => (
             <div
               key={index}
-              className={`glass-card group flex flex-col justify-between overflow-hidden rounded-[28px] border border-border-color bg-surface/50 transition-all duration-700 ease-out transform ${
-                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              }`}
+              className={`glass-card group flex flex-col justify-between overflow-hidden rounded-[28px] border border-border-color bg-surface/50 transition-all duration-700 ease-out transform ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div>
                 {/* Image Section */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-black">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
                   />
-                  {/* Price Tag Overlay */}
-                  <div className="absolute top-4 right-4 bg-primary text-white font-serif font-bold px-4 py-1.5 rounded-full shadow-md text-sm">
-                    {item.price} <span className="text-xs font-sans font-normal text-white/90">/ guest</span>
-                  </div>
+
                 </div>
 
                 {/* Content Section */}
