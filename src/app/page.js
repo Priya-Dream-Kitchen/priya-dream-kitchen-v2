@@ -8,6 +8,7 @@ import Menu from "../components/Menu";
 import Reviews from "../components/Reviews";
 import Booking from "../components/Booking";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -21,31 +22,34 @@ export default function Home() {
       {/* 3. Subtle Parallax Watermark Background Images (scrolled down) */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
         {/* Left Side Watermark (Around About / Services area) */}
-        <div 
-          className="absolute top-[110vh] left-[-150px] md:left-[-100px] w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-no-repeat bg-contain opacity-[0.04] dark:opacity-[0.015] mix-blend-luminosity filter blur-[1px] transition-opacity duration-1000"
-          style={{
-            backgroundImage: "url('/images/spices-closeup.png')",
-            backgroundPosition: "left center",
-          }}
-        />
+        <div className="absolute top-[110vh] left-[-150px] md:left-[-100px] w-[350px] md:w-[500px] h-[350px] md:h-[500px] opacity-[0.04] dark:opacity-[0.015] mix-blend-luminosity filter blur-[1px] transition-opacity duration-1000">
+          <Image
+            src="/images/spices-closeup.png"
+            alt="Spices closeup watermark"
+            fill
+            className="object-contain object-left"
+          />
+        </div>
 
         {/* Right Side Watermark (Around Menu / Reviews area) */}
-        <div 
-          className="absolute top-[280vh] right-[-150px] md:right-[-100px] w-[380px] md:w-[550px] h-[380px] md:h-[550px] bg-no-repeat bg-contain opacity-[0.04] dark:opacity-[0.015] mix-blend-luminosity filter blur-[1px] transition-opacity duration-1000"
-          style={{
-            backgroundImage: "url('/images/food-spread.png')",
-            backgroundPosition: "right center",
-          }}
-        />
+        <div className="absolute top-[280vh] right-[-150px] md:right-[-100px] w-[380px] md:w-[550px] h-[380px] md:h-[550px] opacity-[0.04] dark:opacity-[0.015] mix-blend-luminosity filter blur-[1px] transition-opacity duration-1000">
+          <Image
+            src="/images/food-spread.png"
+            alt="Food spread watermark"
+            fill
+            className="object-contain object-right"
+          />
+        </div>
 
         {/* Left Side Watermark 2 (Around Booking area) */}
-        <div 
-          className="absolute top-[450vh] left-[-150px] md:left-[-80px] w-[320px] md:w-[450px] h-[320px] md:h-[450px] bg-no-repeat bg-contain opacity-[0.035] dark:opacity-[0.012] mix-blend-luminosity filter blur-[1.5px] transition-opacity duration-1000"
-          style={{
-            backgroundImage: "url('/images/srilankan-curries.png')",
-            backgroundPosition: "left center",
-          }}
-        />
+        <div className="absolute top-[450vh] left-[-150px] md:left-[-80px] w-[320px] md:w-[450px] h-[320px] md:h-[450px] opacity-[0.035] dark:opacity-[0.012] mix-blend-luminosity filter blur-[1.5px] transition-opacity duration-1000">
+          <Image
+            src="/images/srilankan-curries.png"
+            alt="Sri Lankan curries watermark"
+            fill
+            className="object-contain object-left"
+          />
+        </div>
       </div>
 
       {/* 4. Main content sections */}

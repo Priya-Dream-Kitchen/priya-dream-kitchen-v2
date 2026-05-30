@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -26,12 +27,15 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 sm:py-32"
     >
       {/* Background Image Container with Parallax effect */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg scale-105 select-none pointer-events-none"
-        style={{
-          backgroundImage: "url('/images/hero-cooking.png')",
-        }}
-      />
+      <div className="absolute inset-0 overflow-hidden select-none pointer-events-none scale-105 z-0">
+        <Image
+          src="/images/hero-cooking.png"
+          alt="Hero Cooking Background"
+          fill
+          priority
+          className="object-cover parallax-bg"
+        />
+      </div>
 
       {/* Dark tint overlay for readability */}
       <div className="absolute inset-0 bg-black/45 md:bg-black/40 z-0" />
