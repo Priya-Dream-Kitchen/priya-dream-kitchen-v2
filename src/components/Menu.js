@@ -27,7 +27,7 @@ export default function Menu() {
   const menuItems = [
     {
       title: 'Sri Lankan Rice & Curry Feast',
-      description: 'The heartbeat of our culinary class. Learn to cook red heirloom rice served with 5 seasonal curries (dhal, jackfruit, beetroot, gotukola sambol, and chicken or fish curry).',
+      description: 'The heartbeat of our culinary class. Learn to cook red heirloom rice served with 7 seasonal curries (dhal, jackfruit, beetroot, gotukola sambol, chicken or fish curry , and many more).',
       image: '/images/food-spread.png',
       tags: ['Traditional', 'Popular', 'Gluten Free'],
     },
