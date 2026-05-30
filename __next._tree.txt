@@ -2,4 +2,4 @@
 :HL["/priya_dream_kitchen_v2/_next/static/media/01e2c6d7106cbe45-s.p.06q2asxb9-u8w.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/priya_dream_kitchen_v2/_next/static/media/4290d814b55e4052-s.p.0lh0a8-q~6hkv.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/priya_dream_kitchen_v2/_next/static/media/680aa1e827d679d2-s.p.17okjora9rfx0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"Olewl8zEea2lLlgOlf3es"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"ot0n1owVtbsFf1aw27UmR"}
