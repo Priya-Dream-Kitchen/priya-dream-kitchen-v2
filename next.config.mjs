@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/priya_dream_kitchen_v2',
 };
 
 export default nextConfig;
