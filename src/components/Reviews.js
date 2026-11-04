@@ -48,20 +48,17 @@ export default function Reviews() {
   }, [testimonials.length]);
 
   return (
-    <section id="reviews" className="py-24 sm:py-32 relative overflow-hidden bg-bg">
-      <div className="absolute top-[30%] right-[10%] w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
+    <section id="reviews" className="bg-surface py-20 sm:py-32 relative">
+      <div className="scallop" aria-hidden="true" />
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 relative z-10">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <span className="text-primary font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full inline-block">
-            Testimonials
-          </span>
-          <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-text">
-            Loved by Travelers
+        <div className="max-w-2xl mb-12">
+          <p className="eyebrow">Testimonials</p>
+          <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
+            Loved by <em className="text-accent font-normal">travelers</em>
           </h2>
-          <p className="text-text-muted text-base sm:text-lg">
+          <p className="mt-5 text-lg text-text-muted">
             Hear from our global guests who experienced the authentic warmth of our traditional kitchen.
           </p>
         </div>
@@ -73,7 +70,7 @@ export default function Reviews() {
             data-ref="a05142f4dac03a10a6551da1671e3b6c"
           >
             <a 
-              className="powered-by-es es-slider text-center block text-sm text-text-muted hover:text-primary transition-colors py-8 border border-border-color rounded-2xl bg-surface/30 backdrop-blur-sm" 
+              className="powered-by-es es-slider text-center block text-text-muted hover:text-primary transition-colors py-8 border border-border-color rounded-2xl"
               href="https://embedsocial.com/google-reviews-widget/" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -85,18 +82,11 @@ export default function Reviews() {
         </div>
 
         {/* Premium Fallback Slider Card */}
-        <div className="max-w-3xl mx-auto">
-          <div className="glass-panel p-8 sm:p-12 rounded-[28px] border border-border-color shadow-xl relative overflow-hidden">
-            {/* Quote SVG watermark */}
-            <div className="absolute top-6 left-6 text-primary/10 w-24 h-24 pointer-events-none">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
-
-            <div className="relative z-10 flex flex-col items-center text-center space-y-6">
+        <div className="max-w-4xl">
+          <div className="relative border-l-4 border-accent pl-6 sm:pl-10 py-2">
+            <div className="flex flex-col items-start space-y-6">
               {/* Stars */}
-              <div className="flex gap-1 text-amber-500">
+              <div className="flex gap-1 text-primary">
                 {[...Array(testimonials[activeReview].rating)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -105,32 +95,37 @@ export default function Reviews() {
               </div>
 
               {/* Review Text */}
-              <p className="text-text font-serif italic text-base sm:text-xl leading-relaxed max-w-2xl">
-                "{testimonials[activeReview].text}"
+              <p className="display !font-normal text-2xl sm:text-4xl !leading-snug min-h-[9rem] sm:min-h-[11rem]">
+                “{testimonials[activeReview].text}”
               </p>
 
               {/* Author Details */}
               <div className="space-y-1">
-                <h4 className="font-sans font-bold text-text text-sm sm:text-base">
+                <h3 className="font-bold text-lg">
                   {testimonials[activeReview].name}
-                </h4>
-                <p className="text-text-muted text-xs uppercase tracking-widest font-semibold">
-                  {testimonials[activeReview].country} — <span className="text-accent">{testimonials[activeReview].date}</span>
+                </h3>
+                <p className="text-text-muted">
+                  {testimonials[activeReview].country} · {testimonials[activeReview].date}
                 </p>
               </div>
             </div>
 
             {/* Slider Dots */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex gap-1 mt-6 -ml-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveReview(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    activeReview === index ? 'bg-primary w-6' : 'bg-text-muted/40 hover:bg-primary/50'
-                  }`}
+                  className="w-11 h-11 flex items-center justify-center cursor-pointer"
                   aria-label={`Go to slide ${index + 1}`}
-                />
+                  aria-current={activeReview === index}
+                >
+                  <span
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      activeReview === index ? 'bg-accent w-7' : 'bg-text/25 w-2.5'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>

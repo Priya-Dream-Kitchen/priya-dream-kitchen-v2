@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Booking() {
   const [formData, setFormData] = useState({
@@ -114,35 +115,44 @@ export default function Booking() {
     }, 1500);
   };
 
+  const fieldClass = (name) =>
+    `w-full min-h-12 px-4 py-3 rounded-lg border bg-surface text-text placeholder-text-muted/70 focus:outline-none focus:ring-2 focus:ring-primary transition-all ${
+      touched[name] && errors[name] ? 'border-accent ring-2 ring-accent/25' : 'border-text/25 focus:border-primary'
+    }`;
+
   return (
-    <section id="booking" className="py-24 sm:py-32 relative overflow-hidden bg-bg/50">
-      {/* Decorative blurred blobs for premium feel */}
-      <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[-10%] w-[350px] h-[350px] bg-accent/10 rounded-full blur-[80px] pointer-events-none" />
+    <section id="booking" className="relative bg-secondary text-cream py-20 sm:py-32">
+      <div className="scallop" aria-hidden="true" />
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-12">
-          <span className="text-primary font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full inline-block">
-            Reservation
-          </span>
-          <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-text">
-            Book Your Experience
+        {/* Hearth & Header */}
+        <div className="lg:col-span-5 lg:sticky lg:top-24">
+          <p className="eyebrow !text-marigold">Reservation</p>
+          <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
+            Book your <em className="text-marigold font-normal">experience</em>
           </h2>
-          <p className="text-text-muted text-base sm:text-lg">
+          <p className="mt-5 text-lg text-cream/80">
             Choose your date, select a slot, and reserve your hands-on culinary journey.
           </p>
+          <div className="relative hidden lg:block mt-10 w-[70%] aspect-[4/5] max-h-[46vh] arch bg-bark">
+            <Image
+              src="/images/kitchen/wood-fire-hearth.webp"
+              alt="The traditional wood-fire hearth with a clay pot and lid"
+              fill
+              sizes="30vw"
+              className="object-cover object-bottom"
+            />
+          </div>
         </div>
 
-        {/* Glass Card Form */}
-        <div className="glass-panel p-8 sm:p-12 rounded-[32px] border border-border-color shadow-2xl">
+        {/* Form Card */}
+        <div className="lg:col-span-7 bg-surface text-text p-6 sm:p-10 rounded-3xl shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]">
           <form onSubmit={handleSubmit} className="space-y-6">
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-semibold tracking-wider text-text uppercase block">
+                <label htmlFor="name" className="font-semibold block">
                   Name
                 </label>
                 <input
@@ -152,21 +162,18 @@ export default function Booking() {
                   value={formData.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.name && errors.name
-                    ? 'border-red-500 ring-2 ring-red-500/25'
-                    : 'border-border-color focus:border-primary'
-                    }`}
+                  className={fieldClass('name')}
                   placeholder="John Doe"
                   required
                 />
                 {touched.name && errors.name && (
-                  <p className="text-xs text-red-500 font-medium">{errors.name}</p>
+                  <p className="text-sm text-accent font-medium">{errors.name}</p>
                 )}
               </div>
 
               {/* Email */}
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-semibold tracking-wider text-text uppercase block">
+                <label htmlFor="email" className="font-semibold block">
                   Email Address
                 </label>
                 <input
@@ -176,15 +183,12 @@ export default function Booking() {
                   value={formData.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.email && errors.email
-                    ? 'border-red-500 ring-2 ring-red-500/25'
-                    : 'border-border-color focus:border-primary'
-                    }`}
+                  className={fieldClass('email')}
                   placeholder="johndoe@example.com"
                   required
                 />
                 {touched.email && errors.email && (
-                  <p className="text-xs text-red-500 font-medium">{errors.email}</p>
+                  <p className="text-sm text-accent font-medium">{errors.email}</p>
                 )}
               </div>
             </div>
@@ -192,7 +196,7 @@ export default function Booking() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Phone */}
               <div className="space-y-2">
-                <label htmlFor="phone" className="text-sm font-semibold tracking-wider text-text uppercase block">
+                <label htmlFor="phone" className="font-semibold block">
                   Phone Number
                 </label>
                 <input
@@ -202,21 +206,18 @@ export default function Booking() {
                   value={formData.phone}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.phone && errors.phone
-                    ? 'border-red-500 ring-2 ring-red-500/25'
-                    : 'border-border-color focus:border-primary'
-                    }`}
+                  className={fieldClass('phone')}
                   placeholder="+44 7911 123456"
                   required
                 />
                 {touched.phone && errors.phone && (
-                  <p className="text-xs text-red-500 font-medium">{errors.phone}</p>
+                  <p className="text-sm text-accent font-medium">{errors.phone}</p>
                 )}
               </div>
 
               {/* Date */}
               <div className="space-y-2">
-                <label htmlFor="date" className="text-sm font-semibold tracking-wider text-text uppercase block">
+                <label htmlFor="date" className="font-semibold block">
                   Select Date
                 </label>
                 <input
@@ -226,14 +227,11 @@ export default function Booking() {
                   value={formData.date}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.date && errors.date
-                    ? 'border-red-500 ring-2 ring-red-500/25'
-                    : 'border-border-color focus:border-primary'
-                    }`}
+                  className={fieldClass('date')}
                   required
                 />
                 {touched.date && errors.date && (
-                  <p className="text-xs text-red-500 font-medium">{errors.date}</p>
+                  <p className="text-sm text-accent font-medium">{errors.date}</p>
                 )}
               </div>
             </div>
@@ -241,7 +239,7 @@ export default function Booking() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Time Slot */}
               <div className="space-y-2">
-                <label htmlFor="time" className="text-sm font-semibold tracking-wider text-text uppercase block">
+                <label htmlFor="time" className="font-semibold block">
                   Time Slot
                 </label>
                 <select
@@ -250,10 +248,7 @@ export default function Booking() {
                   value={formData.time}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.time && errors.time
-                    ? 'border-red-500 ring-2 ring-red-500/25'
-                    : 'border-border-color focus:border-primary'
-                    }`}
+                  className={fieldClass('time')}
                   required
                 >
                   <option value="">Select a time slot</option>
@@ -264,13 +259,13 @@ export default function Booking() {
                   ))}
                 </select>
                 {touched.time && errors.time && (
-                  <p className="text-xs text-red-500 font-medium">{errors.time}</p>
+                  <p className="text-sm text-accent font-medium">{errors.time}</p>
                 )}
               </div>
 
               {/* Number of Guests */}
               <div className="space-y-2">
-                <label htmlFor="guests" className="text-sm font-semibold tracking-wider text-text uppercase block">
+                <label htmlFor="guests" className="font-semibold block">
                   Number of Guests
                 </label>
                 <input
@@ -282,27 +277,24 @@ export default function Booking() {
                   onBlur={handleBlur}
                   min="1"
                   max="10"
-                  className={`w-full px-4 py-3 rounded-xl border bg-surface/50 text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${touched.guests && errors.guests
-                    ? 'border-red-500 ring-2 ring-red-500/25'
-                    : 'border-border-color focus:border-primary'
-                    }`}
+                  className={fieldClass('guests')}
                   required
                 />
                 {touched.guests && errors.guests && (
-                  <p className="text-xs text-red-500 font-medium">{errors.guests}</p>
+                  <p className="text-sm text-accent font-medium">{errors.guests}</p>
                 )}
               </div>
             </div>
 
             {/* Pricing details and Note */}
-            <div className="pt-4 border-t border-border-color/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="pt-4 border-t border-border-color flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-sm text-text-muted font-medium">
-                  Class Rates: <span className="text-accent font-bold">from $25 per guest</span>
+                <span className="text-text-muted font-medium">
+                  Class Rates: <span className="text-primary font-bold">from $25 per guest</span>
                 </span>
               </div>
-              <p className="text-xs text-text-muted italic max-w-sm">
+              <p className="text-sm text-text-muted max-w-sm">
                 *Submitting redirects you to WhatsApp with your details prefilled to confirm with Chef Priya.
               </p>
             </div>
@@ -312,7 +304,7 @@ export default function Booking() {
               <button
                 type="submit"
                 disabled={isSubmitting || isSuccess}
-                className="w-full relative py-4 bg-primary hover:bg-accent text-white font-semibold rounded-full text-base tracking-wider uppercase shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2"
+                className="btn btn-primary w-full disabled:opacity-50 disabled:pointer-events-none"
               >
                 {isSubmitting ? (
                   <>

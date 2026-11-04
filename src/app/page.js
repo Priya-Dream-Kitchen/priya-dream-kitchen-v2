@@ -8,66 +8,33 @@ import Menu from "../components/Menu";
 import Reviews from "../components/Reviews";
 import Booking from "../components/Booking";
 import Footer from "../components/Footer";
-import Image from "next/image";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen relative overflow-hidden bg-bg text-text">
+    <div className="flex flex-col min-h-screen relative bg-bg text-text">
       {/* 1. Page Preloader */}
       <Preloader />
 
       {/* 2. Header & Sticky Navbar */}
       <Navbar />
 
-      {/* 3. Subtle Parallax Watermark Background Images (scrolled down) */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {/* Left Side Watermark (Around About / Services area) */}
-        <div className="absolute top-[110vh] left-[-150px] md:left-[-100px] w-[350px] md:w-[500px] h-[350px] md:h-[500px] opacity-[0.04] dark:opacity-[0.015] mix-blend-luminosity filter blur-[1px] transition-opacity duration-1000">
-          <Image
-            src="/images/spices-closeup.png"
-            alt="Spices closeup watermark"
-            fill
-            className="object-contain object-left"
-          />
-        </div>
-
-        {/* Right Side Watermark (Around Menu / Reviews area) */}
-        <div className="absolute top-[280vh] right-[-150px] md:right-[-100px] w-[380px] md:w-[550px] h-[380px] md:h-[550px] opacity-[0.04] dark:opacity-[0.015] mix-blend-luminosity filter blur-[1px] transition-opacity duration-1000">
-          <Image
-            src="/images/food-spread.png"
-            alt="Food spread watermark"
-            fill
-            className="object-contain object-right"
-          />
-        </div>
-
-        {/* Left Side Watermark 2 (Around Booking area) */}
-        <div className="absolute top-[450vh] left-[-150px] md:left-[-80px] w-[320px] md:w-[450px] h-[320px] md:h-[450px] opacity-[0.035] dark:opacity-[0.012] mix-blend-luminosity filter blur-[1.5px] transition-opacity duration-1000">
-          <Image
-            src="/images/srilankan-curries.png"
-            alt="Sri Lankan curries watermark"
-            fill
-            className="object-contain object-left"
-          />
-        </div>
-      </div>
-
-      {/* 4. Main content sections */}
-      <main className="flex-grow relative z-10">
+      {/* 3. Main content sections */}
+      <main className="flex-grow">
         {/* Hero Banner Section */}
         <Hero />
 
         {/* Story Section */}
         <About />
 
-        {/* Experience Services */}
+        {/* The Class, step by step */}
         <Services />
-
-        {/* Masonry Image Gallery */}
-        <Gallery />
 
         {/* Experience Dishes & Pricing Menu */}
         <Menu />
+
+        {/* Filterable Photo Gallery */}
+        <Gallery />
 
         {/* Customer Reviews & Slider */}
         <Reviews />
@@ -76,8 +43,11 @@ export default function Home() {
         <Booking />
       </main>
 
-      {/* 5. Footer and Map Details */}
+      {/* 4. Footer and Map Details */}
       <Footer />
+
+      {/* 5. Floating WhatsApp shortcut */}
+      <WhatsAppButton />
     </div>
   );
 }

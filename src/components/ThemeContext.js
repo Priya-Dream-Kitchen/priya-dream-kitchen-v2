@@ -5,18 +5,18 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const theme = 'dark';
+  const theme = 'light';
 
   useEffect(() => {
     const root = document.documentElement;
-    root.setAttribute('data-theme', 'dark');
-    root.classList.add('dark');
-    root.classList.remove('light');
-    localStorage.setItem('theme', 'dark');
+    root.setAttribute('data-theme', 'light');
+    root.classList.add('light');
+    root.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }, []);
 
   const toggleTheme = () => {
-    // Keep strictly dark mode, no-op
+    // Keep strictly light mode, no-op
   };
 
   return (

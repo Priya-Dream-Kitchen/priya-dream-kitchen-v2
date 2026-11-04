@@ -9,158 +9,218 @@
   --color-text: var(--text);
   --color-text-muted: var(--text-muted);
   --color-border-color: var(--border-color);
-  
-  --font-serif: var(--font-playfair), serif;
+  --color-marigold: var(--marigold);
+  --color-bark: var(--bark);
+  --color-cream: var(--cream);
+
+  --font-serif: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-karla), sans-serif;
-  
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-slow: float-slow 8s ease-in-out infinite;
-  --animate-float-fast: float-fast 4s ease-in-out infinite;
-  --animate-shine-sweep: shine-sweep 2.5s ease-out infinite;
-  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
   --animate-marquee: marquee 45s linear infinite;
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  @keyframes float-slow {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(3deg); }
-  }
-  @keyframes float-fast {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-6px) rotate(-2deg); }
-  }
-  @keyframes shine-sweep {
-    0% { transform: translateX(-100%) rotate(45deg); }
-    30%, 100% { transform: translateX(200%) rotate(45deg); }
-  }
-  @keyframes fade-in-up {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
+  --animate-spin-slow: spin 24s linear infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+  @keyframes rise {
+    0% { opacity: 0; transform: translateY(28px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
+/* Palette is sampled from the kitchen itself: limewash walls, clay pots,
+   Priya's hibiscus-red batik and the garden. */
 :root {
-  --primary: #D4896A;
-  --accent: #DAA520;
-  --secondary: #8A9F52;
-  --bg: #130E0B;
-  --surface: #1E1714;
-  --text: #F5EFEB;
-  --text-muted: #B8A8A0;
-  --border-color: rgba(212, 137, 106, 0.12);
-  --glass: rgba(30, 23, 20, 0.75);
-  --glass-border: rgba(212, 137, 106, 0.18);
-  
-  --font-geist-sans: var(--font-karla);
-  --font-geist-mono: Courier, monospace;
+  --primary: #A8401F;
+  --accent: #B81D2C;
+  --secondary: #2C4529;
+  --bg: #F3E9DA;
+  --surface: #FBF6EC;
+  --text: #2A1A12;
+  --text-muted: #65493A;
+  --border-color: rgba(42, 26, 18, 0.16);
+  --marigold: #EFAE4A;
+  --bark: #21140E;
+  --cream: #F8F0E2;
+  --glass: rgba(251, 246, 236, 0.92);
+  --glass-border: rgba(42, 26, 18, 0.16);
+
+  color-scheme: light;
 }
 
-* {
-  box-sizing: border-box;
+html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-karla), sans-serif;
-  overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.3s ease;
+  overflow-x: clip;
   position: relative;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 5px;
-  border: 2px solid var(--bg);
-}
-::-webkit-scrollbar-thumb:hover {
+::selection {
   background: var(--accent);
+  color: var(--cream);
 }
 
-/* Glassmorphism Classes */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Used by the chat panel */
 .glass-panel {
   background: var(--glass);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
 }
 
-.glass-card {
-  background: var(--glass);
-  backdrop-filter: blur(12px) saturate(130%);
-  -webkit-backdrop-filter: blur(12px) saturate(130%);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.glass-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.12);
-  border-color: var(--primary);
-}
-
-/* Grain Overlay */
+/* Plaster grain */
 .grain-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 160px 160px; /* small tile: a full-viewport noise filter delays first paint */
   pointer-events: none;
   z-index: 9999;
 }
 
-/* Parallax Scrolling effect */
-.parallax-bg {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+/* The hearth arch: every feature photo sits in this shape */
+.arch {
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .parallax-bg {
-    background-attachment: scroll;
+/* Batik border, drawn after the print on Priya's sarong */
+.batik-strip {
+  height: 36px;
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='36' viewBox='0 0 72 36'%3E%3Cg fill='%23F8F0E2'%3E%3Ccircle cx='36' cy='18' r='3.5'/%3E%3Cg id='p'%3E%3Cellipse cx='36' cy='7.5' rx='2.4' ry='5'/%3E%3C/g%3E%3Cellipse cx='36' cy='28.5' rx='2.4' ry='5'/%3E%3Cellipse cx='25.5' cy='18' rx='5' ry='2.4'/%3E%3Cellipse cx='46.5' cy='18' rx='5' ry='2.4'/%3E%3Ccircle cx='6' cy='9' r='1.8'/%3E%3Ccircle cx='6' cy='27' r='1.8'/%3E%3Ccircle cx='66' cy='9' r='1.8'/%3E%3Ccircle cx='66' cy='27' r='1.8'/%3E%3Ccircle cx='14' cy='18' r='1.8'/%3E%3Ccircle cx='58' cy='18' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 2px;
+  background: currentColor;
+}
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent);
+}
+.btn-outline {
+  border: 1.5px solid currentColor;
+}
+.btn-outline:hover {
+  background: var(--text);
+  color: var(--cream);
+}
+
+/* Scroll entrance */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-rise,
+  .animate-marquee,
+  .animate-spin-slow {
+    animation: none;
   }
 }
 
-/* Hide preloader with class transition */
-.preloader-hidden {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+/* Pie-crust scallop that rises out of the top of a coloured section.
+   It inherits the section's background, so it always matches. */
+.scallop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -15px;
+  height: 16px;
+  background: inherit;
+  -webkit-mask: radial-gradient(circle 16px at 50% 100%, #000 97%, transparent) 0 0 / 32px 16px repeat-x;
+  mask: radial-gradient(circle 16px at 50% 100%, #000 97%, transparent) 0 0 / 32px 16px repeat-x;
+  pointer-events: none;
 }
 
-/* Active Nav Links style */
-.active-nav-link {
-  color: var(--accent) !important;
-  font-weight: 700;
+.btn-primary {
+  box-shadow: 0 12px 28px -12px rgba(168, 64, 31, 0.7);
 }
-.active-nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--accent);
-  border-radius: 2px;
+.btn .btn-arrow {
+  transition: transform 0.25s ease;
+}
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-soft {
+    animation: none;
+  }
 }
