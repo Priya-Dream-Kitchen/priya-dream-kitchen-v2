@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Ornament from './Ornament';
 import Reveal from './Reveal';
 
 const menuItems = [
@@ -24,7 +25,7 @@ const menuItems = [
 
 export default function Menu() {
   return (
-    <section id="menu" className="relative bg-secondary text-cream py-20 sm:py-32">
+    <section id="menu" className="relative bg-secondary mat-weave text-cream py-20 sm:py-32">
       <div className="scallop" aria-hidden="true" />
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
 
@@ -35,6 +36,7 @@ export default function Menu() {
             <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
               What you will <em className="text-marigold font-normal">learn</em>
             </h2>
+            <Ornament className="mt-5 text-marigold" />
           </div>
           <p className="text-lg text-cream/80 max-w-lg lg:justify-self-end">
             Choose your culinary adventure. Every menu package includes full instruction, ingredients, and a celebratory feast.
@@ -53,7 +55,7 @@ export default function Menu() {
                 {index + 1}
               </span>
 
-              <div className="md:col-span-5 md:order-3 relative aspect-[3/2] rounded-t-[120px] overflow-hidden bg-bark">
+              <div className="md:col-span-5 md:order-3 relative aspect-[3/2] rounded-t-[120px] overflow-hidden bg-bark ring-1 ring-marigold/70 ring-offset-[6px] ring-offset-secondary">
                 <Image
                   src={item.image}
                   alt={item.title}

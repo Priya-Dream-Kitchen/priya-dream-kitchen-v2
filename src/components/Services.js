@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import Ornament from './Ornament';
 
 const steps = [
   {
@@ -63,6 +64,7 @@ export default function Services() {
           <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
             Sensory kitchen experiences
           </h2>
+          <Ornament className="mt-5 text-primary" />
           <p className="mt-5 text-lg text-text-muted">
             We provide immersive culinary activities designed to teach you the authentic craft of Sri Lankan cuisine.
           </p>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import Ornament from './Ornament';
 import Reveal from './Reveal';
 
 function Counter({ endValue, duration = 2000, suffix = "" }) {
@@ -72,6 +73,7 @@ export default function About() {
             <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
               Discover the heart of <em className="text-primary font-normal">traditional</em> cooking
             </h2>
+            <Ornament className="mt-5 text-primary" />
           </Reveal>
 
           <Reveal delay={120} className="mt-8 space-y-5 max-w-2xl text-lg leading-relaxed text-text-muted">
@@ -104,7 +106,7 @@ export default function About() {
 
         {/* Priya in her garden, with the sign at the gate */}
         <Reveal className="lg:col-span-5 lg:order-1 relative pb-20 sm:pb-24">
-          <div className="relative w-[82%] aspect-[4/5] arch bg-surface">
+          <div className="relative w-[82%] aspect-[4/5] arch arch-frame bg-surface">
             <Image
               src="/images/kitchen/priya-in-garden.webp"
               alt="Chef Priya in her garden, holding a fresh coconut"

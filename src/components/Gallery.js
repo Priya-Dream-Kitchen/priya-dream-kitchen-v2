@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Ornament from './Ornament';
 
 const filters = ['All', 'Kitchen', 'Food', 'Guests'];
 
@@ -75,6 +76,7 @@ export default function Gallery() {
           <div className="max-w-2xl">
             <p className="eyebrow">Our Gallery</p>
             <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">Moments from the hearth</h2>
+            <Ornament className="mt-5 text-primary" />
             <p className="mt-5 text-lg text-text-muted">
               Glance through the warmth, laughter, and authentic dishes shared at Priya Dream Kitchen.
             </p>

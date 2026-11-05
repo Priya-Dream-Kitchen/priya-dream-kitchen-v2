@@ -70,7 +70,7 @@ export default function Hero() {
               className="absolute right-[-12%] top-[-6%] w-[78%] aspect-square rounded-full bg-[radial-gradient(circle_at_40%_40%,var(--marigold),var(--primary))] opacity-30"
               aria-hidden="true"
             />
-            <div className="relative ml-auto w-[76%] aspect-[3/4.2] max-h-[78vh] arch bg-surface shadow-[0_40px_80px_-40px_rgba(42,26,18,0.55)]">
+            <div className="relative ml-auto w-[76%] aspect-[3/4.2] max-h-[78vh] arch arch-frame bg-surface">
               <Image
                 src="/images/kitchen/priya-scraping-coconut.webp"
                 alt="Chef Priya in her kitchen, scraping fresh coconut on a traditional stool scraper"
@@ -89,6 +89,20 @@ export default function Hero() {
                 sizes="(max-width: 1024px) 42vw, 20vw"
                 className="object-cover"
               />
+              {/* Steam off the pot */}
+              <svg
+                viewBox="0 0 100 80"
+                className="steam absolute inset-x-0 top-[8%] w-full h-[45%] text-white blur-[1.5px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="M35 75 C25 60 45 50 35 35 C27 23 40 15 36 5" />
+                <path d="M52 75 C42 60 62 50 52 35 C44 23 57 15 53 5" />
+                <path d="M68 75 C58 60 78 50 68 35 C60 23 73 15 69 5" />
+              </svg>
             </div>
 
             {/* Floating rating card */}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Ornament from './Ornament';
 
 export default function Reviews() {
   const [activeReview, setActiveReview] = useState(0);
@@ -58,6 +59,7 @@ export default function Reviews() {
           <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
             Loved by <em className="text-accent font-normal">travelers</em>
           </h2>
+          <Ornament className="mt-5 text-primary" />
           <p className="mt-5 text-lg text-text-muted">
             Hear from our global guests who experienced the authentic warmth of our traditional kitchen.
           </p>

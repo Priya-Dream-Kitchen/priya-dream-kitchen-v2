@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Ornament from './Ornament';
 
 export default function Booking() {
   const [formData, setFormData] = useState({
@@ -131,10 +132,11 @@ export default function Booking() {
           <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
             Book your <em className="text-marigold font-normal">experience</em>
           </h2>
+          <Ornament className="mt-5 text-marigold" />
           <p className="mt-5 text-lg text-cream/80">
             Choose your date, select a slot, and reserve your hands-on culinary journey.
           </p>
-          <div className="relative hidden lg:block mt-10 w-[70%] aspect-[4/5] max-h-[46vh] arch bg-bark">
+          <div className="relative hidden lg:block mt-10 w-[70%] aspect-[4/5] max-h-[46vh] arch arch-frame bg-bark" style={{ "--frame-gap": "var(--secondary)", "--frame-line": "var(--marigold)" }}>
             <Image
               src="/images/kitchen/wood-fire-hearth.webp"
               alt="The traditional wood-fire hearth with a clay pot and lid"
@@ -146,7 +148,7 @@ export default function Booking() {
         </div>
 
         {/* Form Card */}
-        <div className="lg:col-span-7 bg-surface text-text p-6 sm:p-10 rounded-3xl shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]">
+        <div className="ornate-card lg:col-span-7 bg-surface text-text p-7 sm:p-12 rounded-3xl shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]">
           <form onSubmit={handleSubmit} className="space-y-6">
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
