@@ -1,123 +1,146 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
+const ribbon = ['Ayubowan', 'Grind the spices', 'Scrape the coconut', 'Fire the clay pot', 'Share the feast'];
+
 export default function Hero() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleCTA = (e, targetId) => {
-    e.preventDefault();
-    const target = document.getElementById(targetId);
-    if (target) {
-      window.scrollTo({
-        top: target.offsetTop - 80,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 sm:py-32"
-    >
-      {/* Background Image Container with Parallax effect */}
-      <div className="absolute inset-0 overflow-hidden select-none pointer-events-none scale-105 z-0">
-        <Image
-          src="/images/hero-cooking.png"
-          alt="Hero Cooking Background"
-          fill
-          priority
-          className="object-cover parallax-bg"
-        />
-      </div>
+    <>
+      <section id="home" className="relative overflow-hidden pt-28 pb-14 lg:pt-32 lg:pb-20">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-      {/* Dark tint overlay for readability */}
-      <div className="absolute inset-0 bg-black/45 md:bg-black/40 z-0" />
+          {/* Copy */}
+          <div className="lg:col-span-6 relative z-10">
+            <p className="eyebrow animate-rise" style={{ animationDelay: '500ms' }}>
+              Cooking classes in Weligama
+            </p>
 
-      {/* 3D Floating Organic Decor - Spices/Leaves SVGs */}
-      <div className="absolute inset-0 z-10 pointer-events-none hidden md:block">
-        {/* Floating cardamom/spice leaf */}
-        <div className="absolute top-[20%] left-[10%] w-16 h-16 opacity-30 animate-float-slow text-secondary">
-          <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-            <path d="M17 2.02c-1.39 0-2.82.52-4.04 1.54C11.75 2.54 10.32 2.02 8.93 2.02 5.56 2.02 3 4.58 3 7.95c0 4.19 3.65 8.16 8.35 12.87.35.35.91.35 1.25 0 4.7-4.71 8.35-8.68 8.35-12.87 0-3.37-2.56-5.93-5.95-5.93zm-4.32 17.5c-3.9-3.92-7.18-7.3-7.18-10.57 0-2.27 1.63-3.93 3.93-3.93.97 0 1.94.39 2.76 1.13-.39.99-.44 2.15-.09 3.23.36 1.09 1.14 1.97 2.19 2.45v3.13c0 .55.45 1 1 1s1-.45 1-1V11.96c1.05-.48 1.83-1.36 2.19-2.45.35-1.08.3-2.24-.09-3.23.82-.74 1.79-1.13 2.76-1.13 2.3 0 3.93 1.66 3.93 3.93 0 3.27-3.28 6.65-7.18 10.57z" />
-          </svg>
-        </div>
-
-        {/* Floating anise / star icon */}
-        <div className="absolute bottom-[20%] right-[10%] w-14 h-14 opacity-25 animate-float-fast text-accent">
-          <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-            <path d="M12 2l2.4 7.4H22l-6 4.7 2.3 7.3-6.3-4.6-6.3 4.6 2.3-7.3-6-4.7h7.6z" />
-          </svg>
-        </div>
-
-        {/* Spice leaf 2 */}
-        <div className="absolute top-[25%] right-[15%] w-12 h-12 opacity-20 animate-float text-primary">
-          <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 1.62-.48 3.14-1.3 4.39z" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Hero Glass Card Container */}
-      <div className="relative max-w-4xl mx-auto px-6 z-20 text-center">
-        <div
-          className={`glass-panel p-8 sm:p-12 md:p-16 rounded-[32px] border border-white/10 shadow-2xl transition-all duration-1000 ease-out transform ${
-            mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
-          }`}
-        >
-          {/* Main Titles */}
-          <div className="space-y-4">
-            <span className="inline-block text-accent font-sans font-semibold text-xs sm:text-sm uppercase tracking-[0.3em] bg-accent/15 px-4 py-1.5 rounded-full mb-2">
-              Authentic Sri Lankan Culinary Art
-            </span>
-            <h1 className="font-serif font-bold text-3xl sm:text-5xl md:text-6xl text-white leading-tight">
-              Priya Dream <span className="text-accent italic font-light font-serif">Kitchen!</span>
+            <h1
+              className="display mt-6 text-[clamp(3.6rem,min(10vw,14.5vh),8.75rem)] !leading-[0.94] animate-rise"
+              style={{ animationDelay: '600ms' }}
+            >
+              Priya <em className="text-accent font-normal">Dream</em>
+              <br />
+              Kitchen
             </h1>
+
+            <p
+              className="mt-7 max-w-lg text-lg sm:text-xl leading-relaxed text-text-muted animate-rise"
+              style={{ animationDelay: '750ms' }}
+            >
+              Discover the soul of traditional cooking. Cook, taste, and enjoy authentic homemade
+              dishes while exploring rich flavors, spices, and cultural stories. Every meal is a memory.
+            </p>
+
+            <div
+              className="mt-9 flex flex-col sm:flex-row sm:items-center gap-3 animate-rise"
+              style={{ animationDelay: '900ms' }}
+            >
+              <a href="#booking" className="btn btn-primary">
+                Book Your Experience
+                <svg className="btn-arrow w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a href="#menu" className="btn btn-outline">
+                Explore Menu
+              </a>
+            </div>
+
+            <dl
+              className="mt-10 pt-6 border-t border-border-color grid grid-cols-2 gap-4 max-w-sm animate-rise"
+              style={{ animationDelay: '1050ms' }}
+            >
+              {[
+                ['5 ★', 'on Google'],
+                ['8 AM – 10 PM', 'every day'],
+              ].map(([value, label]) => (
+                <div key={label}>
+                  <dt className="sr-only">{label}</dt>
+                  <dd className="font-serif text-base sm:text-xl font-medium whitespace-nowrap">{value}</dd>
+                  <dd className="text-sm text-text-muted">{label}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          {/* Subheading */}
-          <p
-            className={`mt-6 max-w-2xl mx-auto text-base sm:text-lg text-white/80 leading-relaxed font-sans transition-all duration-1000 delay-300 transform ${
-              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            Discover the soul of traditional cooking at Priya Dream Kitchen! 🌿 Cook, taste, and
-            enjoy authentic homemade dishes while exploring rich flavors, spices, and cultural
-            stories. Join us – every meal is a memory! ❤️
-          </p>
+          {/* Hearth arches */}
+          <div className="lg:col-span-6 relative animate-rise" style={{ animationDelay: '700ms' }}>
+            {/* Setting sun behind the hearth */}
+            <div
+              className="absolute right-[-12%] top-[-6%] w-[78%] aspect-square rounded-full bg-[radial-gradient(circle_at_40%_40%,var(--marigold),var(--primary))] opacity-30"
+              aria-hidden="true"
+            />
+            <div className="relative ml-auto w-[76%] aspect-[3/4.2] max-h-[78vh] arch arch-frame bg-surface">
+              <Image
+                src="/images/kitchen/priya-scraping-coconut.webp"
+                alt="Chef Priya in her kitchen, scraping fresh coconut on a traditional stool scraper"
+                fill
+                preload
+                sizes="(max-width: 1024px) 76vw, 36vw"
+                className="object-cover object-top"
+              />
+            </div>
 
-          {/* Action Buttons */}
-          <div
-            className={`mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-500 transform ${
-              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
-            <a
-              href="#booking"
-              onClick={(e) => handleCTA(e, 'booking')}
-              className="group relative w-full sm:w-auto px-8 py-4 bg-primary text-white font-medium rounded-full text-base tracking-wider uppercase overflow-hidden shadow-lg transition-all duration-300 hover:bg-accent hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
-            >
-              {/* Shine highlight animation on hover */}
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shine-sweep" style={{ transform: 'skewX(-20deg)' }} />
-              Book Your Experience
-            </a>
+            <div className="absolute left-0 bottom-[-4%] w-[42%] aspect-[3/4] arch border-[6px] border-bg bg-surface">
+              <Image
+                src="/images/kitchen/clay-pot-dhal.webp"
+                alt="Red lentils, roasted curry powder and curry leaves in a clay pot"
+                fill
+                sizes="(max-width: 1024px) 42vw, 20vw"
+                className="object-cover"
+              />
+              {/* Steam off the pot */}
+              <svg
+                viewBox="0 0 100 80"
+                className="steam absolute inset-x-0 top-[8%] w-full h-[45%] text-white blur-[1.5px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="M35 75 C25 60 45 50 35 35 C27 23 40 15 36 5" />
+                <path d="M52 75 C42 60 62 50 52 35 C44 23 57 15 53 5" />
+                <path d="M68 75 C58 60 78 50 68 35 C60 23 73 15 69 5" />
+              </svg>
+            </div>
 
-            <a
-              href="#menu"
-              onClick={(e) => handleCTA(e, 'menu')}
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-medium rounded-full text-base tracking-wider uppercase border border-white/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-sm"
-            >
-              Explore Menu
-            </a>
+            {/* Floating rating card */}
+            <div className="float-soft absolute right-[-2%] sm:right-[-4%] bottom-[14%] bg-surface rounded-2xl px-4 py-3 shadow-[0_20px_40px_-20px_rgba(42,26,18,0.5)]">
+              <p className="text-primary tracking-[0.2em] text-sm" aria-hidden="true">★★★★★</p>
+              <p className="font-serif text-lg leading-tight">Rated 5 on Google</p>
+              <p className="text-sm text-text-muted">Cooking classes, Weligama</p>
+            </div>
+
+            {/* Turning stamp */}
+            <div className="absolute left-[8%] top-[10%] w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-bg" aria-hidden="true">
+              <svg viewBox="0 0 120 120" className="w-full h-full animate-spin-slow text-primary">
+                <defs>
+                  <path id="stamp-circle" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1 -92 0" />
+                </defs>
+                <text fill="currentColor" fontSize="12.5" fontWeight="700" letterSpacing="2.4">
+                  <textPath href="#stamp-circle">COOK • TASTE • ENJOY • REPEAT •</textPath>
+                </text>
+              </svg>
+              <span className="absolute inset-0 flex items-center justify-center font-serif italic text-xl text-accent">
+                Priya
+              </span>
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* Ribbon */}
+      <div className="bg-accent text-cream overflow-hidden" aria-hidden="true">
+        <div className="batik-strip" />
+        <div className="flex w-max animate-marquee py-4">
+          {[...ribbon, ...ribbon, ...ribbon, ...ribbon].map((word, index) => (
+            <span key={index} className="font-serif italic text-xl sm:text-2xl px-6 whitespace-nowrap">
+              {word} <span className="not-italic text-marigold pl-10">✻</span>
+            </span>
+          ))}
+        </div>
       </div>
-    </section>
+    </>
   );
 }

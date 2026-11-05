@@ -1,123 +1,96 @@
-'use client';
-
-import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import Ornament from './Ornament';
+import Reveal from './Reveal';
+
+const menuItems = [
+  {
+    title: 'Sri Lankan Rice & Curry Feast',
+    description: 'The heartbeat of our culinary class. Learn to cook red heirloom rice served with 7 seasonal curries (dhal, jackfruit, beetroot, gotukola sambol, chicken or fish curry , and many more).',
+    image: '/images/kitchen/feast-table.webp',
+    tags: ['Traditional', 'Popular', 'Gluten Free'],
+  },
+  {
+    title: 'Traditional Pol Roti & Lunu Miris',
+    description: 'Master the art of kneading coconut-infused flatbread. Cook over an open fire and pair it with a freshly stone-ground spicy onion chili sambol.',
+    image: '/images/imgs/roti.jpeg',
+    tags: ['Hands-on', 'Spicy', 'Vegetarian'],
+  },
+  {
+    title: 'Kottu Roti & Devilled Chicken',
+    description: 'Learn the rhythmic chopping technique of building Kottu Roti. Blend fresh vegetables, shredded roti, and eggs, served with hot devilled chicken.',
+    image: '/images/imgs/kottu.png',
+    tags: ['Street Food', 'Chef Special'],
+  },
+];
 
 export default function Menu() {
-  const [visible, setVisible] = useState(false);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const menuItems = [
-    {
-      title: 'Sri Lankan Rice & Curry Feast',
-      description: 'The heartbeat of our culinary class. Learn to cook red heirloom rice served with 7 seasonal curries (dhal, jackfruit, beetroot, gotukola sambol, chicken or fish curry , and many more).',
-      image: '/images/food-spread.png',
-      tags: ['Traditional', 'Popular', 'Gluten Free'],
-    },
-    {
-      title: 'Traditional Pol Roti & Lunu Miris',
-      description: 'Master the art of kneading coconut-infused flatbread. Cook over an open fire and pair it with a freshly stone-ground spicy onion chili sambol.',
-      image: '/images/imgs/roti.jpeg',
-      tags: ['Hands-on', 'Spicy', 'Vegetarian'],
-    },
-    {
-      title: 'Kottu Roti & Devilled Chicken',
-      description: 'Learn the rhythmic chopping technique of building Kottu Roti. Blend fresh vegetables, shredded roti, and eggs, served with hot devilled chicken.',
-      image: '/images/imgs/kottu.png',
-      tags: ['Street Food', 'Chef Special'],
-    },
-  ];
-
   return (
-    <section id="menu" className="py-24 sm:py-32 bg-bg/50" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="menu" className="relative bg-secondary mat-weave text-cream py-20 sm:py-32">
+      <div className="scallop" aria-hidden="true" />
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
 
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <span className="text-primary font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full inline-block">
-            Experience Menu
-          </span>
-          <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-text">
-            What You Will Learn
-          </h2>
-          <p className="text-text-muted text-base sm:text-lg">
+        <Reveal className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:items-end">
+          <div>
+            <p className="eyebrow !text-marigold">Experience Menu</p>
+            <h2 className="display mt-5 text-4xl sm:text-5xl lg:text-6xl">
+              What you will <em className="text-marigold font-normal">learn</em>
+            </h2>
+            <Ornament className="mt-5 text-marigold" />
+          </div>
+          <p className="text-lg text-cream/80 max-w-lg lg:justify-self-end">
             Choose your culinary adventure. Every menu package includes full instruction, ingredients, and a celebratory feast.
           </p>
-        </div>
+        </Reveal>
 
-        {/* Menu Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Menu rows */}
+        <div className="mt-14 sm:mt-20">
           {menuItems.map((item, index) => (
-            <div
-              key={index}
-              className={`glass-card group flex flex-col justify-between overflow-hidden rounded-[28px] border border-border-color bg-surface/50 transition-all duration-700 ease-out transform ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+            <Reveal
+              key={item.title}
+              as="article"
+              className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-center py-8 md:py-10 border-t border-cream/20"
             >
-              <div>
-                {/* Image Section */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-black">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
-                  />
+              <span className="hidden md:block md:col-span-1 font-serif italic text-4xl text-marigold">
+                {index + 1}
+              </span>
 
-                </div>
-
-                {/* Content Section */}
-                <div className="p-6 space-y-4">
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-[10px] font-sans font-semibold uppercase tracking-wider bg-secondary/15 text-secondary px-2.5 py-0.5 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <h3 className="font-serif font-bold text-xl sm:text-2xl text-text group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-text-muted text-sm sm:text-base leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+              <div className="md:col-span-5 md:order-3 relative aspect-[3/2] rounded-t-[120px] overflow-hidden bg-bark ring-1 ring-marigold/70 ring-offset-[6px] ring-offset-secondary">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="absolute top-5 left-1/2 -translate-x-1/2 bg-marigold text-bark rounded-full px-4 py-1.5 text-sm font-bold whitespace-nowrap">
+                  {item.tags[0]}
+                </span>
               </div>
 
-              {/* Action Button */}
-              <div className="p-6 pt-0 mt-4">
+              <div className="md:col-span-6">
+                <h3 className="display text-3xl sm:text-4xl">{item.title}</h3>
+                <p className="mt-4 text-lg leading-relaxed text-cream/80">{item.description}</p>
+
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <li key={tag} className="text-sm font-medium border border-cream/30 px-3 py-1 rounded-full">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+
                 <a
                   href="#booking"
-                  className="block w-full text-center py-3 bg-surface hover:bg-primary border border-primary text-primary hover:text-white font-medium rounded-full text-sm uppercase tracking-wider transition-all duration-300 shadow-sm"
+                  className="mt-6 inline-flex items-center gap-2 min-h-11 font-bold text-marigold hover:text-cream transition-colors"
                 >
                   Book Session
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </a>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

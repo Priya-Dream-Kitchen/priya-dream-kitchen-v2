@@ -1,11 +1,11 @@
-import { Playfair_Display_SC, Karla } from "next/font/google";
+import { Fraunces, Karla } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeContext";
 
-const playfair = Playfair_Display_SC({
-  variable: "--font-playfair",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 const karla = Karla({
@@ -37,10 +37,10 @@ export const metadata = {
     siteName: "Priya Dream Kitchen",
     images: [
       {
-        url: "/images/hero-cooking.png",
+        url: "/images/og-garden-kitchen.jpg",
         width: 1200,
         height: 630,
-        alt: "Priya Dream Kitchen Cooking Experience",
+        alt: "The garden kitchen at Priya Dream Kitchen, Weligama",
       },
     ],
     locale: "en_US",
@@ -50,7 +50,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${karla.variable} h-full`} data-theme="dark" suppressHydrationWarning>
+    <html lang="en" className={`${fraunces.variable} ${karla.variable} h-full`} data-theme="light" suppressHydrationWarning>
       <body className="min-h-full font-sans antialiased">
         <ThemeProvider>
           <div className="grain-overlay" />
