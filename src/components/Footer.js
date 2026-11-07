@@ -4,6 +4,8 @@ const links = [
   { id: 'services', label: 'The Class' },
   { id: 'gallery', label: 'Photo Gallery' },
   { id: 'menu', label: 'Dishes Menu' },
+  { id: 'reviews', label: 'Guest Reviews' },
+  { id: 'booking', label: 'Book a Cooking Class' },
 ];
 
 export default function Footer() {
@@ -20,14 +22,14 @@ export default function Footer() {
         {/* Columns */}
         <div className="mt-14 sm:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <h3 className="font-serif text-xl text-marigold">Priya Dream Kitchen</h3>
+            <h2 className="font-serif text-xl text-marigold">Priya Dream Kitchen</h2>
             <p className="mt-3 text-cream/75 leading-relaxed max-w-xs">
               Authentic traditional Sri Lankan cooking classes in Weligama. Learn the art of spices, curries, and hearth-side dining in a warm local family kitchen.
             </p>
           </div>
 
           <div>
-            <h3 className="font-bold">Quick Links</h3>
+            <h2 className="font-bold">Quick Links</h2>
             <ul className="mt-3 text-cream/75">
               {links.map((link) => (
                 <li key={link.id}>
@@ -40,7 +42,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold">Opening Hours</h3>
+            <h2 className="font-bold">Opening Hours</h2>
             <p className="mt-3 text-cream/75">
               Monday - Sunday: <span className="text-marigold">8 AM - 10 PM</span>
             </p>
@@ -50,7 +52,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold">Reach Out</h3>
+            <h2 className="font-bold">Reach Out</h2>
             <ul className="mt-3 text-cream/75">
               <li className="py-1">Weligama, Sri Lanka</li>
               <li>

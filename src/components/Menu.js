@@ -12,13 +12,13 @@ const menuItems = [
   {
     title: 'Traditional Pol Roti & Lunu Miris',
     description: 'Master the art of kneading coconut-infused flatbread. Cook over an open fire and pair it with a freshly stone-ground spicy onion chili sambol.',
-    image: '/images/imgs/roti.jpeg',
+    image: '/images/menu/pol-roti.webp',
     tags: ['Hands-on', 'Spicy', 'Vegetarian'],
   },
   {
     title: 'Kottu Roti & Devilled Chicken',
     description: 'Learn the rhythmic chopping technique of building Kottu Roti. Blend fresh vegetables, shredded roti, and eggs, served with hot devilled chicken.',
-    image: '/images/imgs/kottu.png',
+    image: '/images/menu/kottu-roti.webp',
     tags: ['Street Food', 'Chef Special'],
   },
 ];

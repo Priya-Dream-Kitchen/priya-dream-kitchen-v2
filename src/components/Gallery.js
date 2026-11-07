@@ -8,21 +8,21 @@ const filters = ['All', 'Kitchen', 'Food', 'Guests'];
 
 const images = [
   { src: '/images/kitchen/clay-pot-table.webp', alt: 'A clay pot, red onions and fresh herbs laid out beside the grinding stone', tag: 'Kitchen', tall: false },
-  { src: '/images/imgs/IMG_2229.jpg', alt: 'Warm Sri Lankan welcome — Ayubowan greeting in traditional sarongs', tag: 'Guests', tall: false },
+  { src: '/images/gallery/ayubowan-welcome.webp', alt: 'Warm Sri Lankan welcome — Ayubowan greeting in traditional sarongs', tag: 'Guests', tall: false },
   { src: '/images/kitchen/coconut-scraper.webp', alt: 'Cracking a coconut over the traditional scraper', tag: 'Kitchen', tall: true },
   { src: '/images/kitchen/clay-bowl-prep.webp', alt: 'Freshly sliced vegetables in a clay bowl, ready for the pot', tag: 'Food', tall: false },
-  { src: '/images/imgs/IMG_1877.jpg', alt: 'Hands-on cooking class — preparing local ingredients in clay bowls', tag: 'Guests', tall: false },
+  { src: '/images/gallery/hands-on-class.webp', alt: 'Hands-on cooking class — preparing local ingredients in clay bowls', tag: 'Guests', tall: false },
   { src: '/images/kitchen/fresh-produce.webp', alt: 'Baskets of fresh vegetables, mangoes and fruit on the kitchen counter', tag: 'Food', tall: true },
-  { src: '/images/imgs/IMG_2424 (1).jpg', alt: 'Happy cooking class graduates posing for a group selfie with Chef Priya and her son', tag: 'Guests', tall: false },
+  { src: '/images/gallery/class-group-selfie.webp', alt: 'Happy cooking class graduates posing for a group selfie with Chef Priya and her son', tag: 'Guests', tall: false },
   { src: '/images/kitchen/spice-shelf.webp', alt: 'Jars of spices on a red shelf against the clay wall', tag: 'Kitchen', tall: false },
   { src: '/images/kitchen/guest-mixing.webp', alt: 'A guest mixing ingredients by hand in a clay bowl', tag: 'Guests', tall: false },
-  { src: '/images/imgs/IMG_2420.jpg', alt: 'Authentic Sri Lankan feast — curries and red rice served in clay pots', tag: 'Food', tall: false },
-  { src: '/images/imgs/IMG_2427.JPG', alt: 'Relaxing in our tropical garden swing after the cooking class', tag: 'Guests', tall: false },
+  { src: '/images/gallery/rice-and-curry-feast.webp', alt: 'Authentic Sri Lankan feast — curries and red rice served in clay pots', tag: 'Food', tall: false },
+  { src: '/images/gallery/garden-swing.webp', alt: 'Relaxing in our tropical garden swing after the cooking class', tag: 'Guests', tall: false },
   { src: '/images/kitchen/wood-fire-hearth.webp', alt: 'The traditional wood-fire hearth with a clay pot and lid', tag: 'Kitchen', tall: true },
-  { src: '/images/imgs/photo_2026-04-10_13-11-18.jpg', alt: 'Guests learning the art of stir-frying curries over the stove', tag: 'Guests', tall: false },
-  { src: '/images/imgs/IMG_2415.jpg', alt: 'Family moments — capturing memories during the cooking lesson', tag: 'Guests', tall: false },
-  { src: '/images/imgs/photo_2026-04-10_13-17-08.jpg', alt: 'Sitting down to enjoy the handmade feast in our rustic kitchen', tag: 'Guests', tall: false },
-  { src: '/images/imgs/photo_2026-04-16_19-48-10.jpg', alt: 'Serving up fresh homemade rice and curry creations with Chef Priya', tag: 'Food', tall: false },
+  { src: '/images/gallery/stir-frying-curries.webp', alt: 'Guests learning the art of stir-frying curries over the stove', tag: 'Guests', tall: false },
+  { src: '/images/gallery/family-moments.webp', alt: 'Family moments — capturing memories during the cooking lesson', tag: 'Guests', tall: false },
+  { src: '/images/gallery/sitting-down-to-feast.webp', alt: 'Sitting down to enjoy the handmade feast in our rustic kitchen', tag: 'Guests', tall: false },
+  { src: '/images/gallery/serving-rice-and-curry.webp', alt: 'Serving up fresh homemade rice and curry creations with Chef Priya', tag: 'Food', tall: false },
 ];
 
 export default function Gallery() {
@@ -108,14 +108,13 @@ export default function Gallery() {
               key={img.src}
               type="button"
               onClick={() => openLightbox(index)}
-              aria-label={`View photo: ${img.alt}`}
               className={`group relative block w-full mb-3 sm:mb-4 break-inside-avoid overflow-hidden rounded-xl bg-surface cursor-zoom-in ${
                 img.tall ? 'aspect-[4/5]' : 'aspect-[4/3]'
               }`}
             >
               <Image
                 src={img.src}
-                alt=""
+                alt={img.alt}
                 fill
                 sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
