@@ -81,7 +81,7 @@ export default function About() {
               At Priya Dream Kitchen, we invite tourists and food enthusiasts to step away from the commercial dining tables and dive into the authentic flavors of Sri Lanka. Nestled in the coastal paradise of Weligama, our classes offer a hands-on window into ancestral culinary heritage.
             </p>
             <p>
-              Under the warm guidance of Priya and our local home chefs, you will learn to grind spices from scratch, blend flavors using hand-carved clay pots, and decode the subtle secrets of Sri Lankan coconut curries. Every session is an intimate celebration of culture, stories, and culinary joy.
+              Under the warm guidance of Priya and our local home chefs, you will learn to grind spices from scratch, blend flavors using hand-carved clay pots, and decode the subtle secrets of <a href="#menu" className="text-text underline decoration-primary/50 underline-offset-4 hover:text-primary">Sri Lankan coconut curries</a>. <a href="#services" className="text-text underline decoration-primary/50 underline-offset-4 hover:text-primary">Every session</a> is an intimate celebration of culture, stories, and culinary joy.
             </p>
           </Reveal>
 

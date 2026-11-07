@@ -1,6 +1,7 @@
 import { Fraunces, Karla } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeContext";
+import { siteUrl, siteName, siteTitle, siteDescription } from "../lib/site";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -15,8 +16,16 @@ const karla = Karla({
 });
 
 export const metadata = {
-  title: "Priya Dream Kitchen | Traditional Sri Lankan Cooking Class Weligama",
-  description: "Discover the soul of traditional cooking at Priya Dream Kitchen in Weligama, Sri Lanka. Learn authentic recipes, use local spices, cook and eat with expert chefs.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   keywords: [
     "cooking class Weligama",
     "Sri Lankan cooking class",
@@ -31,10 +40,10 @@ export const metadata = {
     icon: "/images/logo.png",
   },
   openGraph: {
-    title: "Priya Dream Kitchen | Traditional Sri Lankan Cooking Class",
-    description: "Discover the soul of traditional cooking at Priya Dream Kitchen, Weligama. Cook, taste, and enjoy authentic homemade dishes.",
-    url: "https://nimeshakalanka.github.io/Priya-Dream-Kitchen.github.io",
-    siteName: "Priya Dream Kitchen",
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    siteName,
     images: [
       {
         url: "/images/og-garden-kitchen.jpg",
@@ -45,6 +54,12 @@ export const metadata = {
     ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/images/og-garden-kitchen.jpg"],
   },
 };
 

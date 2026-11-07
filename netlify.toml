@@ -1,3 +1,16 @@
 [build]
   command = "npm run build"
   publish = "out"
+
+# Browsers remember to use HTTPS only
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+
+# Let browsers cache photos for a week
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
