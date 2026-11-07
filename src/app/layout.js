@@ -26,6 +26,9 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "zgWge081APUpfAs-GhYMQeksnK_44mmzMIXqRtDcX8E",
+  },
   keywords: [
     "cooking class Weligama",
     "Sri Lankan cooking class",
