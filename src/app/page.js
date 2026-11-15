@@ -29,15 +29,17 @@ const jsonLd = {
       telephone: "+94742417308",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "Piyaputhu Niwasa, Hettigewaththa, Palalla Road",
         addressLocality: "Weligama",
+        postalCode: "81700",
         addressCountry: "LK",
       },
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          opens: "08:00",
-          closes: "22:00",
+          opens: "09:00",
+          closes: "23:00",
         },
       ],
     },

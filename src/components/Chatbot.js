@@ -21,7 +21,7 @@ export default function Chatbot() {
     } else if (text.includes('location')) {
       return '📍 We’re located in Weligama, Sri Lanka (right in the town center, in front of Priya Dream Kitchen).';
     } else if (text.includes('time') || text.includes('hour')) {
-      return '🕒 We’re open daily from 8:00 AM to 10:00 PM.';
+      return '🕒 We’re open daily from 9:00 AM to 11:00 PM.';
     } else if (text.includes('contact') || text.includes('phone') || text.includes('number')) {
       return '📞 You can contact us at +94 74 241 7308 or message us on Whatsapp!';
     } else if (text.includes('thank')) {

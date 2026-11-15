@@ -20,13 +20,13 @@ export default function Booking() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const timeSlots = [
-    { value: '8-10', label: '8:00 AM - 10:00 AM' },
-    { value: '10-12', label: '10:00 AM - 12:00 PM' },
-    { value: '12-2', label: '12:00 PM - 2:00 PM' },
-    { value: '2-4', label: '2:00 PM - 4:00 PM' },
-    { value: '4-6', label: '4:00 PM - 6:00 PM' },
-    { value: '6-8', label: '6:00 PM - 8:00 PM' },
-    { value: '8-10-pm', label: '8:00 PM - 10:00 PM' },
+    { value: '9-11', label: '9:00 AM - 11:00 AM' },
+    { value: '11-1', label: '11:00 AM - 1:00 PM' },
+    { value: '1-3', label: '1:00 PM - 3:00 PM' },
+    { value: '3-5', label: '3:00 PM - 5:00 PM' },
+    { value: '5-7', label: '5:00 PM - 7:00 PM' },
+    { value: '7-9', label: '7:00 PM - 9:00 PM' },
+    { value: '9-11-pm', label: '9:00 PM - 11:00 PM' },
   ];
 
   const validateField = (name, value) => {

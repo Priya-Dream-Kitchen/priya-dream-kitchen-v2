@@ -44,7 +44,7 @@ export default function Footer() {
           <div>
             <h2 className="font-bold">Opening Hours</h2>
             <p className="mt-3 text-cream/75">
-              Monday - Sunday: <span className="text-marigold">8 AM - 10 PM</span>
+              Monday - Sunday: <span className="text-marigold">9 AM - 11 PM</span>
             </p>
             <p className="mt-2 text-sm text-cream/75">
               *Reservations are recommended at least 24 hours in advance.
@@ -54,7 +54,7 @@ export default function Footer() {
           <div>
             <h2 className="font-bold">Reach Out</h2>
             <ul className="mt-3 text-cream/75">
-              <li className="py-1">Weligama, Sri Lanka</li>
+              <li className="py-1">Piyaputhu Niwasa, Hettigewaththa, Palalla Road, Weligama 81700, Sri Lanka</li>
               <li>
                 <a href="tel:+94742417308" className="inline-block py-1 hover:text-marigold transition-colors">
                   +94 74 241 7308

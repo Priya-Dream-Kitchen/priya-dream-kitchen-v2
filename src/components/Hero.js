@@ -52,7 +52,7 @@ export default function Hero() {
             >
               {[
                 ['5 ★', 'on Google'],
-                ['8 AM – 10 PM', 'every day'],
+                ['9 AM – 11 PM', 'every day'],
               ].map(([value, label]) => (
                 <div key={label}>
                   <dt className="sr-only">{label}</dt>
